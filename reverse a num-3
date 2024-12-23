@@ -1,0 +1,41 @@
+@@ -0,0 +1,40 @@
+#include <stdio.h>
+#include <ctype.h>
+
+int reverseNumber(int num) {
+    int reversed = 0;
+    int digit; 
+    
+    
+    while (num != 0) {
+        digit = num % 10; 
+        reversed = reversed * 10 + digit; 
+        num /= 10; 
+    }
+    
+    return reversed;
+}
+
+int main() {
+    char input[100];
+    int num, reversed;
+    
+    printf("Enter a number: ");
+    scanf("%s", input);
+    
+    
+    int i;
+    for (i = 0; input[i] != '\0'; i++) {
+        if (!isdigit(input[i]) && !(i == 0 && input[i] == '-')) {
+            printf("Illegal input\n");
+            return 1;
+        }
+    }
+    
+    
+    sscanf(input, "%d", &num);
+    reversed = reverseNumber(num);
+    printf("Reversed number: %d\n", reversed);
+    
+    return 0;
+}
