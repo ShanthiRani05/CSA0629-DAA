@@ -1,0 +1,43 @@
+
+#include <stdio.h>
+
+int binarySearch(int nums[], int size, int target) {
+    int left = 0, right = size - 1, mid;
+    while (left <= right) {
+        mid = left + (right - left) / 2;
+        if (nums[mid] == target) {
+            return mid;
+        } else if (nums[mid] < target) {
+            left = mid + 1;
+        } else {
+            right = mid - 1;
+        }
+    }
+    return -1; 
+}
+
+int main() {
+    int n, target, i;
+    printf("Enter the size of the array: ");
+    scanf("%d", &n);
+
+    int nums[n];
+    printf("Enter %d sorted elements: ", n);
+    i = 0;
+    while (i < n) {
+        scanf("%d", &nums[i]);
+        i++;
+    }
+
+    printf("Enter the target: ");
+    scanf("%d", &target);
+
+    int result = binarySearch(nums, n, target);
+    if (result != -1) {
+        printf("Target found at index: %d\n", result);
+    } else {
+        printf("Target not found.\n");
+    }
+
+    return 0;
+}
