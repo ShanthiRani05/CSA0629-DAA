@@ -1,0 +1,37 @@
+
+#include <stdio.h>
+#include <stdlib.h>
+
+int compare(const void *a, const void *b) {
+    return (*(int*)a - *(int*)b);
+}
+
+void findMthMaximumNthMinimum(int arr[], int size, int M, int N) {
+  
+    qsort(arr, size, sizeof(int), compare);
+    
+    
+    if (M <= 0 || N <= 0 || M > size || N > size) {
+        printf("Illegal input\n");
+        return;
+    }
+
+  
+    int mthMax = arr[size - M];
+
+   
+    int nthMin = arr[N - 1];
+
+    printf("M-th Maximum Element: %d\n", mthMax);
+    printf("N-th Minimum Element: %d\n", nthMin);
+}
+
+int main() {
+    int arr[] = {116, 16, 16, 16, 16};
+    int size = sizeof(arr) / sizeof(arr[0]);
+    int M = 3, N = 2;
+
+    findMthMaximumNthMinimum(arr, size, M, N);
+
+    return 0;
+}
